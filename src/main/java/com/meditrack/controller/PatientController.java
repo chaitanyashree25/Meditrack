@@ -30,7 +30,7 @@ public class PatientController {
     }
 
     @GetMapping("/by-email")
-    public Optional<Patient> getEmailByEmail(@RequestParam String email){
+    public Optional<Patient> getPatientByEmail(@RequestParam String email){
         return patientService.getPatientByEmail(email);
     }
 }
