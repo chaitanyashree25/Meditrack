@@ -1,9 +1,12 @@
 package com.meditrack.controller;
 
+import com.meditrack.dto.AppointmentRequest;
+import com.meditrack.dto.AppointmentResponse;
 import com.meditrack.model.Appointment;
 import com.meditrack.service.AppointmentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -21,8 +24,8 @@ public class AppointmentController {
     }
 
     @PostMapping
-    public Appointment saveAppointment(@Valid @RequestBody Appointment appointment){
-        return appointmentService.saveAppointment(appointment);
+    public AppointmentResponse saveAppointment(@Valid @RequestBody AppointmentRequest request){
+        return appointmentService.saveAppointment(request);
     }
 
     @GetMapping("/by-doctor/{doctorId}")
@@ -36,7 +39,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/appointment-by-doctor")
-    public List<Appointment> getDoctorAppointmentsInRange(@RequestParam Integer doctorId,@Valid LocalDateTime start,@Valid LocalDateTime end){
+    public List<Appointment> getDoctorAppointmentsInRange(@RequestParam Integer doctorId, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end){
         return appointmentService.getDoctorAppointmentsInRange(doctorId,start,end);
     }
 }

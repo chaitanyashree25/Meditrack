@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "appointments")
 public class Appointment {
 
-    enum Status {
+  public  enum Status {
         SCHEDULED, COMPLETED, CANCELLED
     };
 
