@@ -1,5 +1,6 @@
 package com.meditrack.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -7,6 +8,7 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "doctors")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Doctor {
 
     @Id
