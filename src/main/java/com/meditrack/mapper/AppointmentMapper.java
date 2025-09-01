@@ -23,7 +23,7 @@ public class AppointmentMapper {
         return appointment;
     }
 
-    //Converts PPOINTMENT ENTITY INTO APPOINTMENTRESPONSE DTO
+    //Converts APPOINTMENT ENTITY INTO APPOINTMENTRESPONSE DTO
 
     public AppointmentResponse mapToResponse(Appointment appointment){
         AppointmentResponse response = new AppointmentResponse();
